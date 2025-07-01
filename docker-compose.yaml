@@ -15,7 +15,7 @@ services:
     volumes:
       - ./db:/var/lib/mysql
 
-  graphql:
+  graphql_express:
     container_name: brighte_graphql
     restart: always
     build:
@@ -27,7 +27,9 @@ services:
       - '8080:8080'
     volumes:
       - ./backend:/opt/app
-      - /opt/app/node_modules 
+      - /opt/app/node_modules
+    environment:
+      NODE_ENV: development 
 
   gui:
     container_name: brighte_frontend
@@ -35,14 +37,14 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     links:
-      - graphql
+      - graphql_express
     networks:
       - frontend
       - backend
     ports:
       - '80:3000'
     volumes:
-      - ./frontend/:opt/app
+      - ./frontend:/opt/app
       - /opt/app/node_modules
 
 networks:

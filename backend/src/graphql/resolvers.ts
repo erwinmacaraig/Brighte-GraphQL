@@ -7,7 +7,7 @@ const root = {
             text: "Happy Coding",
             views: 12
         };
-    }, //registrationInput:  RegistrationDataInterface
+    }, 
     register: async function( { registrationInput }: RegistrationDataInterface) {
         const email = registrationInput.email;
         const name = registrationInput.name;
@@ -20,11 +20,3 @@ const root = {
 };
 
 export default root;
-
-/*
-name: String
-        email: String
-        mobile: String
-        postcode: String
-        services: String!
-*/        

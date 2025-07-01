@@ -8,7 +8,8 @@ const app = express();
 app.use(express.json());
 app.all('/graphql', createHandler({
     schema: schema,
-    rootValue: root
+    rootValue: root,
+    
 }))
 
 app.get("/", (req: Request, res: Response , next: NextFunction) => {

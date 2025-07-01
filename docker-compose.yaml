@@ -1,0 +1,53 @@
+services:
+  database:
+    container_name: brighte_db
+    image: mysql:8.0    
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: sysadmin
+      MYSQL_DATABASE: brighte
+      MYSQL_USER: registrant
+      MYSQL_PASSWORD: registration
+    networks:
+      - backend
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./db:/var/lib/mysql
+
+  graphql:
+    container_name: brighte_graphql
+    restart: always
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    networks:
+      - backend
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./backend:/opt/app
+      - /opt/app/node_modules 
+
+  gui:
+    container_name: brighte_frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    links:
+      - graphql
+    networks:
+      - frontend
+      - backend
+    ports:
+      - '80:3000'
+    volumes:
+      - ./frontend/:opt/app
+      - /opt/app/node_modules
+
+networks:
+  backend:
+  frontend:
+
+
+  

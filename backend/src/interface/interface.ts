@@ -8,3 +8,7 @@ export interface RegistrationDataInterface {
     }
     
 }
+
+export interface RegistrationInterface {
+    [key:string]: any; 
+}

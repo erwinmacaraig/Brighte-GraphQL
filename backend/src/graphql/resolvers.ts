@@ -1,4 +1,5 @@
 import { RegistrationDataInterface } from '../interface/interface';
+import Connection from '../models/Connection';
 
 
 const root = {
@@ -16,6 +17,12 @@ const root = {
         const services = registrationInput.services;
         console.log("Should create user here, ");
         console.log(services);
+        // insert ignore na lang
+
+        // const createdSurvey = 
+
+        return 
+
     }
 };
 

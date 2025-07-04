@@ -43,6 +43,8 @@ services:
       - backend
     ports:
       - '80:3000'
+    depends_on:
+      - graphql_express
     volumes:
       - ./frontend:/opt/app
       - /opt/app/node_modules
@@ -50,6 +52,7 @@ services:
 networks:
   backend:
   frontend:
+    driver: bridge
 
 
   

@@ -1,18 +1,13 @@
 import {buildSchema} from 'graphql';
 
 const schema = buildSchema(`
-    type Service {
-        _id: ID!
-        serviceName: String!
-    }
-
     type Registrant {
-        _id: ID!
+        id: Int!
         name: String
         email: String
         mobile: String
         postcode: String
-        services: [Service!]!
+        services: [String]!
     }
 
     input RegistrationData {
@@ -20,7 +15,7 @@ const schema = buildSchema(`
         email: String
         mobile: String
         postcode: String
-        services: String!
+        services: [String!]!
     }
 
     type Mutation {
@@ -31,9 +26,10 @@ const schema = buildSchema(`
         text: String!
         views: Int!
     }
-
+    
     type Query {
-        hello: TestData!
+        hello: TestData!,
+        leads: [Registrant]!
     }
 
     schema {

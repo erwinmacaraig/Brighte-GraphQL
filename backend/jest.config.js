@@ -7,10 +7,14 @@ module.exports = {
   testEnvironment: "node",
   preset: 'ts-jest',
   extensionsToTreatAsEsm: ['.ts', '.tsx'],
+  // transform: {
+  //   ...tsJestTransformCfg,
+  // },
   transform: {
-    ...tsJestTransformCfg,
+    '^.+\\.ts$': 'ts-jest', // For TypeScript files
+    // Add other transformers if needed, e.g., for JavaScript files
   },
   // transformIgnorePatterns: [
-  //           '/node_modules/(?!my-esm-module-name).+\\.js$', // Example for a specific module
-  //         ],
+  //   '/opt/app/node_modules/(?!my-esm-module-name).+\\.js$', // Example for a specific module
+  // ],
 };

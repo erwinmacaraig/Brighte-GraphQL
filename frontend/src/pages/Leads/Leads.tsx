@@ -33,8 +33,7 @@ function Leads(){
         .then(res => {
             return res.json();
         })
-        .then(resData => {
-            console.log(resData['data']['leads']);
+        .then(resData => {            
             setLeads(resData['data']['leads']);
         })
         .catch((error) => {

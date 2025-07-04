@@ -3,9 +3,9 @@ Dockerized implementation of Brighte Eats done with GraphQL, Express and React.
 
 ## Running This Project Locally
 
-1. Make sure to [install Docker Compose or Docker Desktop in your local machine](https://docs.docker.com/compose/install/) 
-2. Clone or fork this repository. 
-3. Run 
+1. Make sure to [install Docker Compose or Docker Desktop in your local machine](https://docs.docker.com/compose/install/).
+2. Clone or fork this repository. Then change directory to the project directory - Brighte-GraphQL
+3. Make sure that your Docker engine is running. At the command line, execute:  
 ```
 docker compose build && docker compose up -d 
 ```

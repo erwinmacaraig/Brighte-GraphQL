@@ -1,6 +1,7 @@
 CREATE TABLE IF NOT EXISTS registration_survey (
-	id INT(11) NOT NULL AUTO_INCREMENT,
+	id INT NOT NULL AUTO_INCREMENT,
     email VARCHAR(100) NOT NULL,
+    name VARCHAR(100), 
     mobile VARCHAR(20),
     postcode VARCHAR(10),
     services VARCHAR(255) NOT NULL,

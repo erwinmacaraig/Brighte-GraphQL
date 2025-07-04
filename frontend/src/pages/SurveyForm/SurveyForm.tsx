@@ -1,5 +1,7 @@
 import React, { HTMLAttributes } from "react";
-import { useState, useRef  } from "react";
+import { useState, useRef   } from "react";
+import {useNavigate, To} from 'react-router-dom';
+
 import "./SurveyForm.css";
 
 function SurveyForm() {
@@ -10,6 +12,7 @@ function SurveyForm() {
     const [service, setService] = useState<string[]>([]);
     const divCbRef = useRef<HTMLDivElement>(null);
 
+    const navigate = useNavigate();
     const handleServiceCheckBox = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.checked === true) {
            setService([...service, event.target.value])            
@@ -17,7 +20,9 @@ function SurveyForm() {
             setService(service.filter(item => item !== event.target.value))
         } 
     }
-
+    const gotoPage = (page:To) => {
+        navigate(page);
+    };
     const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const graphqlQuery = {
@@ -62,6 +67,8 @@ function SurveyForm() {
             for(let i = 1; i < 4; i++) {
                 (divCbRef.current?.children[i].children[0] as HTMLInputElement).checked = false;
             }
+            gotoPage('/leads');
+            
 
         })
         .catch(err => {

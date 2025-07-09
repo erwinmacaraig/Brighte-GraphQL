@@ -1,6 +1,6 @@
 import { RegistrationDataInterface } from '../interface/interface';
 import Registration from '../models/Registration';
-
+import  validator from 'validator';
 
 const root = {
     hello() {
@@ -9,10 +9,11 @@ const root = {
             views: 12
         };
     }, 
-    leads: async function(){
+    leads: async function({...page} ){
         try {
+            console.log(page['page']);
             const registration = new Registration();
-            const collection = await registration.getCollection();
+            const collection = await registration.getCollection(2, page['page']);
             return collection;
         } catch(error) {
             return [];
@@ -23,7 +24,9 @@ const root = {
         const name = registrationInput.name;
         const mobile = registrationInput.mobile;
         const postcode = registrationInput.postcode;
-        const services = registrationInput.services;       
+        const services = registrationInput.services;
+
+
         try {
             const registration = new Registration();
             const id = await registration.create({

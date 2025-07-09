@@ -8,6 +8,7 @@ const schema = buildSchema(`
         mobile: String
         postcode: String
         services: [String]!
+        page: Int
     }
 
     input RegistrationData {
@@ -29,7 +30,7 @@ const schema = buildSchema(`
     
     type Query {
         hello: TestData!,
-        leads: [Registrant]!
+        leads(page: Int): [Registrant]!
     }
 
     schema {

@@ -91,10 +91,13 @@ class Registration {
         });
     }
 
-    public getCollection(){
+    public getCollection(limit=2, offset=0){
         return new Promise( async(resolve, reject) => {
             try {
-                const sql = `SELECT id, name, email, mobile, postcode, services FROM registration_survey`;
+                console.log(offset);
+                let page:number = (offset - 1) * limit;
+                
+                const sql = `SELECT id, name, email, mobile, postcode, services FROM registration_survey LIMIT ${limit} OFFSET ${page}`;
                 const [rows, fields ]= await this._pool.query(sql);
                 const dataRows = rows as mysql.RowDataPacket[]; 
                 dataRows.forEach(item => {
